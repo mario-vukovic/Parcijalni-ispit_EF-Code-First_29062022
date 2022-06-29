@@ -1,7 +1,13 @@
+using EF_CodeFirst.Data;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+var defaultDb = builder.Configuration.GetConnectionString("DefaultDb");
+builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(defaultDb));
+
 
 var app = builder.Build();
 
@@ -13,7 +19,9 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
