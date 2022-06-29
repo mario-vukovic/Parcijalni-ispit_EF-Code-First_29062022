@@ -1,4 +1,5 @@
 using EF_CodeFirst.Data;
+using EF_CodeFirst.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +24,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseStaticFiles();
+
+app.MigrateDatabase();
 
 app.UseRouting();
 

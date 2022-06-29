@@ -7,7 +7,6 @@ namespace EF_CodeFirst.Data
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
-            Database.Migrate();
         }
 
         public DbSet<Grade> Grade { get; set; }
